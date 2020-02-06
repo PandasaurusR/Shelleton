@@ -8,6 +8,17 @@ namespace Shelleton.Commands
 {
     public static class DefaultCommands
     {
+        public static string Help()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("Available Commands:");
+            foreach (var key in Shell.GetCommands())
+            {
+                sb.AppendLine(key);
+            }
+            return sb.ToString();
+        }
+
         public static string Print(string text)
         {
             return string.Format("Printed '{0}'", text);

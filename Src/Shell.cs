@@ -48,6 +48,21 @@ namespace Shelleton
             }
         }
 
+        public static List<string> GetCommands()
+        {
+            List<string> _commands = new List<string>();
+
+            foreach (var _class in _commandLibraries.Keys)
+            {
+                foreach (var _command in _commandLibraries[_class].Keys)
+                {
+                    _commands.Add(string.Format("{0}.{1}", _class, _command));
+                }
+            }
+
+            return _commands;
+        }
+
         static void Run()
         {
             while (true)

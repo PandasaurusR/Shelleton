@@ -187,7 +187,15 @@ namespace Shelleton
                     command.Name,
                     BindingFlags.InvokeMethod | BindingFlags.Static | BindingFlags.Public,
                     null, null, inputArgs);
-                return result.ToString();
+                try
+                {
+                    return result.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    // Return an empty string on null response from function
+                    return "";
+                }
             }
             catch (TargetInvocationException ex)
             {
